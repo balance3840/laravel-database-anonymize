@@ -1,0 +1,43 @@
+{
+    "name": "ramiroestrella/laravel-database-anonymize",
+    "description": "Laravel package to anonymize the database",
+    "version": "1.0.2",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "RamiroEstrella\\LaravelDatabaseAnonymize\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ramiro Estrella",
+            "email": "ramiro.estrellac@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.1",
+        "illuminate/console": ">=8.0",
+        "illuminate/support": ">=8.0",
+        "illuminate/contracts": ">=8.0"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.24",
+        "laravel/framework": "^9.0",
+        "laravel/helpers": "^1.4"
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "optimize-autoloader": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RamiroEstrella\\LaravelDatabaseAnonymize\\Providers\\DatabaseAnonymizeServiceProvider"
+            ]
+        }
+    }
+}
