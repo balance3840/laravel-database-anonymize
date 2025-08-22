@@ -30,7 +30,7 @@ composer require ramiroestrella/laravel-database-anonymize
 Publish the configuration file with:
 
 ```bash
-php artisan vendor:publish --provider="RamiroEstrella\LaravelDatabaseAnonymize\ServiceProvider"
+php artisan vendor:publish --provider="RamiroEstrella\LaravelDatabaseAnonymize\DatabaseAnonymizeServiceProvider"
 ```
 
 The published configuration file (`config/laravel-database-anonymize.php`) includes:
