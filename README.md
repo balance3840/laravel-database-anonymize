@@ -82,7 +82,7 @@ class User extends Authenticatable
 {
     use Anonymizable;
 
-    public function anonymizableAttributes(Generator $faker): array
+    public function toAnonymize(Generator $faker): array
     {
         return [
             'email' => $this->id . '@custom.dev',
@@ -151,12 +151,12 @@ php artisan db:anonymize
 
 Anonymize specific models:
 ```bash
-php artisan db:anonymize --model=App\\Models\\User --model=App\\Models\\Employee
+php artisan db:anonymize --model=App\\\\Models\\\\User --model=App\\\\Models\\\\Employee
 ```
 
 Exclude a specific model:
 ```bash
-php artisan db:anonymize --exclude=App\\Models\\Employee
+php artisan db:anonymize --exclude=App\\\\Models\\\\Employee
 ```
 
 ---
