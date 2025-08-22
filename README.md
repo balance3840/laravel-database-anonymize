@@ -96,7 +96,7 @@ class User extends Authenticatable
     }
 
     // Optional: Specify conditions for anonymization
-    public function anonymizableCondition(): Builder
+    public function anonymizeCondition(): Builder
     {
         return self::withTrashed()->where('something', '>=', '...');
     }
