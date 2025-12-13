@@ -149,7 +149,7 @@ class AnonymizeService
      */
     public function recordsCount(Model $model): int
     {
-        return $model::query()->count();
+        return $this->getQuery($model)->count();
     }
 
     /**
