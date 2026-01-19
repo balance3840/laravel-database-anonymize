@@ -39,7 +39,7 @@ final class AnonymizeCommand extends Command
      *
      * @var string
      */
-    protected $signature = "db:anonymize {--model=*} {--excludeModel=*}";
+    protected $signature = "db:anonymize {--model=*} {--excludeModel=*} {--dbConnection=*}";
 
     /**
      * The description of the console command.
@@ -72,7 +72,7 @@ final class AnonymizeCommand extends Command
      */
     public function handle(): int
     {
-        $this->service = new AnonymizeService();
+        $this->service = new AnonymizeService($this->option('dbConnection'));
 
         // Confirm the environment before proceeding with the anonymization.
         if (!$this->confirmToProceed('Environment "' . config('app.env') . '" restricted.', function () {

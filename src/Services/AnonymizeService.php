@@ -52,14 +52,17 @@ class AnonymizeService
 
     protected const RELATIONS_KEY = 'relations';
 
+    protected ?string $dbConnection = null;
+
     /**
      * Constructor.
      *
      * Initializes the Faker generator instance.
      */
-    public function __construct()
+    public function __construct(string|null $dbConnection = null)
     {
         $this->faker = Factory::create();
+        $this->dbConnection = $dbConnection;
     }
 
     /**
@@ -177,6 +180,10 @@ class AnonymizeService
      */
     public function anonymize(Model $model): bool
     {
+        if ($this->dbConnection) {
+            $model->setConnection($this->dbConnection);
+        }
+        
         $anonymizeData = $model->toAnonymize($this->faker);
 
         $relations = isset($anonymizeData[self::RELATIONS_KEY]) ? $anonymizeData[self::RELATIONS_KEY] : [];
