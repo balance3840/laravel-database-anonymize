@@ -1,7 +1,7 @@
 {
     "name": "ramiroestrella/laravel-database-anonymize",
     "description": "Laravel Database Anonymize is a package designed to streamline data anonymization, enabling organizations to safeguard privacy, comply with regulations, reduce the risk of data breaches, and share data securely.",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "type": "library",
     "license": "MIT",
     "autoload": {

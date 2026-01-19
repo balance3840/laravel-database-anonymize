@@ -39,7 +39,7 @@ final class AnonymizeCommand extends Command
      *
      * @var string
      */
-    protected $signature = "db:anonymize {--model=*} {--excludeModel=*} {--dbConnection=*}";
+    protected $signature = "db:anonymize {--model=*} {--excludeModel=*} {--dbConnection=}";
 
     /**
      * The description of the console command.
