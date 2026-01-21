@@ -74,11 +74,17 @@ final class AnonymizeCommand extends Command
     {
         $this->service = new AnonymizeService($this->option('dbConnection'));
 
+        // Check if the database connection is allowed in restricted environments.
+        if (!$this->service->isConnectionAllowed($this->option('dbConnection'))) {
+            $this->error('The specified database connection is not allowed for anonymization in a restricted environment.');
+            return self::FAILURE;
+        }
+
         // Confirm the environment before proceeding with the anonymization.
         if (!$this->confirmToProceed('Environment "' . config('app.env') . '" restricted.', function () {
             return $this->service->isRestricitedEnvironment();
         })) {
-            return 0;
+            return self::FAILURE;
         }
 
         $this->faker = Factory::create();

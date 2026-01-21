@@ -76,6 +76,31 @@ class AnonymizeService
     }
 
     /**
+     * Checks if the given database connection is allowed (exempt from restricted environment checks).
+     *
+     * @param string|null $connection
+     * @return bool
+     */
+    public function isConnectionAllowed(?string $connection): bool
+    {
+        if (!$this->isRestricitedEnvironment()) {
+            return true;
+        }
+
+        $allowedConnections = config('database-anonymize.allowed_db_connections', []);
+
+        if (empty($allowedConnections)) {
+            return false;
+        }
+
+        if ($connection === null) {
+            $connection = config('database.default');
+        }
+
+        return in_array($connection, $allowedConnections, true);
+    }
+
+    /**
      * Retrieves all classes in the codebase that use the Anonymizable trait.
      *
      * @return array<int, string>
